@@ -1,0 +1,39 @@
+{
+  "header": {
+    "cart": "Cart"
+  },
+  "footer": {
+    "login": "Login",
+    "search": "Search",
+    "copyright": "Copyright"
+  },
+  "a11y": {
+    "home": "Home",
+    "open_cart": "Open cart",
+    "account": "Account",
+    "search": "Search",
+    "footer_nav": "Footer navigation",
+    "main_nav": "Main navigation"
+  },
+  "sections": {
+    "product_banner": {
+      "title": "Page title",
+      "error_no_product": "Unable to retrieve the product. Please verify that the handle is specified correctly in the section settings.",
+      "select_size": "Select size",
+      "sizes": "Sizes",
+      "select_color": "Select color",
+      "available_sizes": "Available sizes",
+      "add_to_bag": "Add to bag",
+      "available": "Available:",
+      "unavailable": "Unavailable"
+    }
+  },
+  "nav": {
+    "home": "Home",
+    "shop": "Shop"
+  },
+  "teaser": {
+    "title": "Recommended products",
+    "empty": "There are no products in this collection yet"
+  }
+}

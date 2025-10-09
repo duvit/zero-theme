@@ -1,0 +1,9 @@
+<footer class="site-footer" role="contentinfo">
+  <div class="container">
+    {% render 'util-links', position: 'footer' %}
+    <small
+      >&copy; {{ 'footer.copyright' | t: default: '©' }}
+      {{ shop.name -}}
+    </small>
+  </div>
+</footer>

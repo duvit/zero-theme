@@ -1,0 +1,8 @@
+<a href="{{ routes.root_url }}" class="site-logo" aria-label="{{ 'a11y.home' | t: default: 'Home' }}">
+  {% assign logo_asset = 'logo.svg' %}
+  {% if logo_asset %}
+    <img src="{{ logo_asset | asset_url }}" alt="{{ shop.name | escape }}" width="100" height="24" loading="eager">
+  {% else %}
+    <span class="site-logo-text">{{ shop.name | escape }}</span>
+  {% endif %}
+</a>

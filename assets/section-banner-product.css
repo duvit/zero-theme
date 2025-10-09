@@ -1,0 +1,166 @@
+.product-card {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  padding: 40px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  justify-content: center;
+}
+
+
+.product-card__main-image {
+  flex-shrink: 0;
+  border-radius: 8px;
+  overflow: hidden;
+  max-width: 536px;
+}
+
+.product-card__main-image img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  display: block;
+}
+
+
+.product-card__info {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  max-width: 612px;
+}
+
+
+.product-card__title {
+  font-size: 24px;
+  line-height: 32px;
+  margin: 0;
+  color: #000;
+}
+
+
+.price {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.price--sale {
+  color: #b30000;
+}
+
+.price--compare {
+  text-decoration: line-through;
+  color: #888;
+  margin-left: 8px;
+}
+
+
+.color-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 24px;
+}
+
+.color-button {
+  padding: 6px 12px;
+  border: 1px solid #000;
+  border-radius: 4px;
+  background: #fff;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.2s;
+}
+
+.color-button.active {
+  border-color: #000;
+  font-weight: 600;
+}
+
+.product-card__info-sizes__title {
+  margin-top: 24px;
+  font-size: 14px;
+  line-height: 20px;
+  color: #000;
+}
+
+.product-card__info-sizes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.product-card__size-btn {
+  flex: 1 0 48%;
+  min-width: 80px;
+  max-width: 168px;
+  height: 48px;
+  border: 1px solid #4d4d4d;
+  border-radius: 8px;
+  background: #fff;
+  font-size: 14px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.2s;
+}
+
+.product-card__size-btn.active {
+  border-color: #000;
+  font-weight: 600;
+}
+
+.add-to-bag-btn {
+  margin: 32px 0 0;
+  width: 100%;
+  max-width: 612px;
+  height: 56px;
+  background-color: #111;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.add-to-bag-btn:hover {
+  background-color: #333;
+}
+
+.product-card__description {
+  margin-top: 24px;
+  font-size: 14px;
+  line-height: 20px;
+  color: #2b2b2b;
+}
+
+.product-card__error {
+  padding: 1em;
+  background: #ffeaea;
+  color: #b30000;
+  border: 1px solid #b30000;
+  border-radius: 4px;
+}
+
+@media (max-width: 768px) {
+  .product-card {
+    flex-direction: column;
+    padding: 20px;
+  }
+
+  .product-card__main-image,
+  .product-card__info {
+    max-width: 100%;
+  }
+
+  .add-to-bag-btn {
+    max-width: 100%;
+  }
+}

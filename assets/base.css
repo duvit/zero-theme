@@ -1,0 +1,105 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  line-height: 1.5;
+  color: #222;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+
+.site-header {
+  border-bottom: 1px solid #eee;
+  padding: 1rem 0;
+}
+
+.site-header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+.site-logo img {
+  height: 32px;
+}
+
+.site-logo-text {
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+
+.main-nav__list {
+  display: flex;
+  gap: 1rem;
+}
+
+.main-nav__link {
+  padding: 0.25rem 0.5rem;
+  transition: color 0.2s;
+}
+
+.main-nav__link:hover {
+  color: #007acc;
+}
+
+
+.util-links {
+  display: flex;
+  gap: 1rem;
+  font-size: 0.9rem;
+}
+
+.util-links a:hover {
+  text-decoration: underline;
+}
+
+.site-footer {
+  border-top: 1px solid #eee;
+  padding: 1.5rem 0;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.site-footer nav {
+  margin-bottom: 0.5rem;
+}
+
+.site-footer a:hover {
+  color: #007acc;
+}
+
+@media (max-width: 768px) {
+  .site-header .container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .main-nav__list,
+  .util-links {
+    flex-wrap: wrap;
+  }
+}

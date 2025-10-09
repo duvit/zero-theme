@@ -1,0 +1,111 @@
+<script src="{{ 'color-selector.js' | asset_url }}" defer></script>
+{{ 'section-banner-product.css' | asset_url | stylesheet_tag }}
+
+{%- assign current_product = product -%}
+{%- if current_product == null -%}
+  {%- assign fallback_handle = 'nike-air-max-plus' -%}
+  {%- assign current_product = all_products[fallback_handle] -%}
+{%- endif -%}
+
+{%- if current_product == null -%}
+  <div class="product-card__error" role="alert">
+    {{
+      'sections.product_banner.error_no_product'
+      | t: default: 'Не вдалося отримати продукт. Перевірте handle у налаштуваннях.'
+    }}
+  </div>
+{%- else -%}
+  <section class="product-card" role="region" aria-labelledby="product-title">
+    <div class="product-card__gallery">
+      <div class="product-card__main-image">
+        {%- if current_product.featured_image -%}
+          {{
+            current_product.featured_image
+            | image_url: width: 536
+            | image_tag: alt: current_product.featured_image.alt
+            | default: current_product.title, width: 536, height: 536, loading: 'lazy'
+          }}
+        {%- else -%}
+          {{
+            'placeholder-image.png'
+            | asset_url
+            | image_tag: alt: current_product.title
+            | default: '-', width: 536, height: 536, loading: 'lazy'
+          }}
+        {%- endif -%}
+      </div>
+    </div>
+
+    <div class="product-card__info">
+      <h2 id="product-title" class="product-card__title">
+        {{ current_product.title | escape | default: '-' }}
+      </h2>
+
+      {%- assign first_variant = current_product.variants.first -%}
+      <div id="product-price-block" class="product-card__info-price text-base">
+        {% render 'price-block', variant: first_variant %}
+      </div>
+
+      {%- assign color_option = current_product.options_by_name.Color -%}
+      {%- if color_option -%}
+        {%- assign color_index = null -%}
+        {%- for option in current_product.options_with_values -%}
+          {%- if option.name == 'Color' -%}
+            {%- assign color_index = forloop.index0 -%}
+          {%- endif -%}
+        {%- endfor -%}
+
+        {%- assign unique_colors = '' -%}
+        {%- for variant in current_product.variants -%}
+          {%- assign color = variant.options[color_index] -%}
+          {%- unless unique_colors contains color -%}
+            {%- assign unique_colors = unique_colors | append: color | append: ',' -%}
+          {%- endunless -%}
+        {%- endfor -%}
+
+        {%- assign colors = unique_colors | split: ',' | uniq -%}
+
+        <div
+          class="color-options"
+          role="group"
+          aria-label="{{ 'sections.product_banner.select_color' | t: default: 'Оберіть колір' }}"
+        >
+          {%- for color in colors limit: 3 -%}
+            {% render 'color-button', product: current_product, color: color, color_index: color_index %}
+          {%- endfor -%}
+        </div>
+
+        <div id="stock-info" class="product-card__stock-info" aria-live="polite"></div>
+      {%- endif -%}
+
+      {%- if current_product.options_by_name['Shoe size'] -%}
+        <h3 class="product-card__info-sizes__title text-body-medium">
+          {{ 'sections.product_banner.select_size' | t: default: 'Оберіть розмір:' }}
+        </h3>
+        <div
+          class="product-card__info-sizes"
+          role="group"
+          aria-label="{{ 'sections.product_banner.sizes' | t: default: 'Варіанти розмірів' }}"
+        >
+          {%- for size in current_product.options_by_name['Shoe size'].values -%}
+            <button class="product-card__size-btn" type="button" data-size="{{ size }}">
+              {{ size }}
+            </button>
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+
+      <button
+        class="add-to-bag-btn"
+        type="button"
+        aria-label="{{ 'sections.product_banner.add_to_bag' | t: default: 'Додати в кошик' }}"
+      >
+        {{ 'sections.product_banner.add_to_bag' | t: default: 'Додати в кошик' }}
+      </button>
+
+      <p class="product-card__description">
+        {{ current_product.description | default: '' }}
+      </p>
+    </div>
+  </section>
+{%- endif -%}
